@@ -188,6 +188,9 @@ shakaDemo.init = function() {
       let localVideo =
           /** @type {!HTMLVideoElement} */(document.getElementById('video'));
       let localPlayer = new shaka.Player(localVideo);
+      localVideo.addEventListener('timeupdate', function(e) {
+        console.log('timeupdate', e.target.currentTime, e);
+      });
       shakaDemo.castProxy_ = new shaka.cast.CastProxy(
           localVideo, localPlayer, shakaDemo.CC_APP_ID_);
 
